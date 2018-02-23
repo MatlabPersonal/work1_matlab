@@ -1,0 +1,15 @@
+cd('D:\derek\17102016allfiles\new\LabviewFiles\MatlabFiles');
+load('AllSubjects.mat');
+RightLIG = AllSubject{1,1}{1,21};
+RightFIG = AllSubject{1,1}{1,16};
+EulerX = RightFIG';
+angle_S = RightLIG';
+% gyroX=AllSubject{1,1}{1,7};
+% gyroY=AllSubject{1,1}{1,8};
+% gyroZ=AllSubject{1,1}{1,9};
+ms = linspace(1,length(EulerX),length(EulerX));
+gyroX = sin(ms);
+gyroY = sin(ms);
+gyroZ = sin(ms);
+[locsFX,locsLFX,maxKneeFlexion,devProjAngle,speed,locsLandingPoint,maxPostLand,minPostLand] = findMetrics(EulerX,angle_S,3,gyroX,gyroY,gyroZ,-45,ms);
+disp(devProjAngle);

@@ -1,0 +1,23 @@
+clc;
+clear;
+filename = 'D:\Derek\Matlab\runningModule_V2\MatlabFiles\data\test_vimove2_int\20180223145137881_raw.csv';
+[Stc,data_left,data_right] = readDataFromVM2RawCsv(filename);
+% data_left = data_left(4312:9844,1);
+% data_right = data_right(4604:10195,1);
+% data_right = interp1(1:length(data_right(:,1)),data_right,linspace(1,length(data_right(:,1)),length(data_left(:,1))))';
+% Stc = linspace(1,length(data_left(:,1)')*10,length(data_left(:,1)'));
+figure;
+plot(data_left(:,2)); hold on;
+plot(data_right(:,2),'r');
+
+%%
+BodyMass = 78;
+[GRF_Left, GRF_Vector_Left, IPA_Left, IPA_Vector_Left, ...
+    GRF_Right, GRF_Vector_Right, IPA_Right, IPA_Vector_Right, ...
+    ContactTime_Left, ContactTimeVector_Left,...
+    ContactTime_Right, ContactTimeVector_Right,...
+    Speed, SpeedVector,Distance, DistanceVector,...
+    Cadence, CadenceVector, RunTime, StrideNumber,...
+    ASI,ASI_Vector,time_L,time_R] = ...
+    estimateMetrics(Stc, BodyMass, data_left(:,2)', data_right(:,2)', 6);
+

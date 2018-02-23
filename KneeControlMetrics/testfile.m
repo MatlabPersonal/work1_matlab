@@ -1,0 +1,1 @@
+[locsFX,locsLFX,maxKneeFlexion,devProjAngle,speed,locsLandingPoint,maxPostLand,minPostLand] = findMetrics(EulerX,angle_S,movementType,gyroX',gyroY',gyroZ',-45,ms);
